@@ -1,11 +1,27 @@
-<ul>
-  <div *ngFor="let stat of statsObservable | async">
-    <ngb-alert type="info" [dismissible]="false">
-      <h3><a href="#">{{stat.name}}</a></h3>
-      <p>{{stat.time}}</p>
-      <div>
-        <p>{{stat.points}}<p></p>
-      </div>
-    </ngb-alert>  
+<div class="container">
+    <h2>Stat Tracker</h2>
+    <p>Enter all the players and then collaboratively edit the fields throughout the game!</p>
+    <p>At the end of the game see how close you were</p>            
+    <table class="table table-hover">
+      <thead>
+        <tr>
+          <th>Number</th>
+          <th>Player</th>
+          <th>Minutes</th>
+          <th>Rebounds</th>
+          <th>Assists</th>
+          <th>Points</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let stat of stats$ | async">
+          <td><input type="number" id="numberId" (input)="onChange(stat.key, 'number', 'numberId')" value="{{stat.number}}"></td>
+          <td id="{{stat.key}}">{{stat.player}}</td>
+          <td id="{{stat.key}}">{{stat.minutes}}</td>
+          <td id="{{stat.key}}">{{stat.rebounds}}</td>
+          <td id="{{stat.key}}">{{stat.assists}}</td>
+          <td id="{{stat.key}}">{{stat.points}}</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-</ul>

@@ -8,12 +8,24 @@ import { Observable } from 'rxjs/Observable';
   styleUrls: []
 })
 export class StatsListComponent implements OnInit {
-  statsObservable: Observable<any[]>;
 
-  constructor(private db: AngularFireDatabase) { }
+  statsRef: AngularFireList<any>;
+  stats$: Observable<any[]>;
 
-  ngOnInit() {
-    this.statsObservable = this.db.list('/stats').valueChanges();
+  constructor(private db: AngularFireDatabase) {
   }
 
+  ngOnInit() {
+    this.statsRef = this.db.list('/stats');
+    this.stats$ = this.statsRef.snapshotChanges().map(changes => {
+        return changes.map(c => ({ key: c.payload.key, ...c.payload.val()
+      }));
+    });
+  }
+
+  onChange(key: string, category: string, value: string) {
+    const elementValue = (<HTMLInputElement>document.getElementById(value)).value;
+    const change = JSON.parse('{ "' + category + '": "' + elementValue + '"}');
+    const addedStat = this.db.object('/stats/' + key).update(change);
+  }
 }
