@@ -12,12 +12,14 @@ import { AppComponent } from './app.component';
 import { environment } from './../environments/environment';
 import { AppNavbarComponent } from './app-navbar/app-navbar.component';
 import { StatsListComponent } from './stats-list/stats-list.component';
+import { AddStatComponent } from './add-stat/add-stat.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AppNavbarComponent,
-    StatsListComponent
+    StatsListComponent,
+    AddStatComponent
   ],
   imports: [
     BrowserModule,
