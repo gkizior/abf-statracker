@@ -1,11 +1,13 @@
 <ul>
-  <div *ngFor="let course of coursesObservable | async">
+  <div *ngFor="let course of statsObservable | async">
     <ngb-alert type="info" [dismissible]="false">
       <h3><a href="#">{{course.title}}</a></h3>
       <p>{{course.description}}</p>
+      <button (click)="print(course)"></button>>
       <div>
         <a href="{{course.url}}" target="_blank" class="btn btn-danger">Go to Course</a>
       </div>
     </ngb-alert>  
   </div>
 </ul>
+<button (click)="addCourse()">add a course!</button>
