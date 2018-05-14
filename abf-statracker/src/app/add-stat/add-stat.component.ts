@@ -10,16 +10,20 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 })
 export class AddStatComponent implements OnInit {
 
-  @Input()id: number;
   myForm: FormGroup;
 
   closeResult: string;
   modalReference: any;
 
+  id: string;
+  table: string;
+
   constructor(private modalService: NgbModal, private db: AngularFireDatabase) {
   }
 
   ngOnInit() {
+    this.id = window.location.pathname.substring(1);
+    this.table = '/stats/' + this.id;
   }
 
   addStat(): void {
@@ -37,7 +41,7 @@ export class AddStatComponent implements OnInit {
           assists: assists,
           points: points
       };
-      const ref = this.db.database.ref('/stats');
+      const ref = this.db.database.ref(this.table);
       const addedStat = ref.push(stats);
       console.log(addedStat.key);
   }
