@@ -3,9 +3,8 @@ import { NgModule, Component } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-    { path: '', component: StatsListComponent },
     { path: ':id', component: StatsListComponent },
-    { path: '**', redirectTo: '/', pathMatch: 'full' }
+    { path: '**', redirectTo: '/1', pathMatch: 'full' }
 ];
 
 @NgModule({
