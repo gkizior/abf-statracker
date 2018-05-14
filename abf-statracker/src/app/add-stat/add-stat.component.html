@@ -1,0 +1,51 @@
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Modal title</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form id="form">
+      <div class="modal-boy">
+        <div class="container">
+          <div class="form-group">
+            <label for="number">Number</label>
+            <input type="number" class="form-control">
+          </div>
+          <div class="form-group">
+              <label for="player">Player</label>
+              <input type="text" class="form-control">
+            </div>
+          <div class="form-group">
+              <label for="minutes">Minutes</label>
+              <input type="number" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="rebounds">Rebounds</label>
+            <input type="number" class="form-control">
+          </div>
+          <div class="form-group">
+            <label for="assists">Assists</label>
+            <input type="number" class="form-control">
+          </div>
+          <div class="form-group">
+              <label for="points">Points</label>
+              <input type="number" class="form-control">
+          </div>
+            
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+    <button type="button" class="btn btn-outline-dark" (click)="close()">Add the stat</button>
+  </div>
+</ng-template>
+
+<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Add a stat</button>
+
+<hr>
+
+<pre>{{closeResult}}</pre>
