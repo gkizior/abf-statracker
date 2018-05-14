@@ -5,22 +5,40 @@
     <table class="table table-hover">
       <thead>
         <tr>
-          <th>Number</th>
+          <th style="width:75px;">Number</th>
           <th>Player</th>
-          <th>Minutes</th>
-          <th>Rebounds</th>
-          <th>Assists</th>
-          <th>Points</th>
+          <th style="width:75px;">Minutes</th>
+          <th style="width:75px;">Rebounds</th>
+          <th style="width:75px;">Assists</th>
+          <th style="width:75px;">Points</th>
         </tr>
       </thead>
       <tbody>
         <tr *ngFor="let stat of stats$ | async">
-          <td><input type="number" id="numberId" (input)="onChange(stat.key, 'number', 'numberId')" value="{{stat.number}}"></td>
-          <td id="{{stat.key}}">{{stat.player}}</td>
-          <td id="{{stat.key}}">{{stat.minutes}}</td>
-          <td id="{{stat.key}}">{{stat.rebounds}}</td>
-          <td id="{{stat.key}}">{{stat.assists}}</td>
-          <td id="{{stat.key}}">{{stat.points}}</td>
+          <td>
+            <input type="number" class="form-control" id="numberId{{stat.key}}" 
+            (change)="onChange(stat.key, 'number', 'numberId')" value="{{stat.number}}" style="width:75px;">
+          </td>
+          <td>
+            <input type="text" class="form-control" id="playerId{{stat.key}}" 
+            (change)="onChange(stat.key, 'player', 'playerId')" value="{{stat.player}}">
+          </td>
+          <td>
+            <input type="number" class="form-control" id="minutesId{{stat.key}}" 
+            (change)="onChange(stat.key, 'minutes', 'minutesId')" value="{{stat.minutes}}" style="width:75px;">
+          </td>
+          <td>
+            <input type="number" class="form-control" id="reboundsId{{stat.key}}" 
+            (change)="onChange(stat.key, 'rebounds', 'reboundsId')" value="{{stat.rebounds}}" style="width:75px;">
+          </td>
+          <td>
+            <input type="number" class="form-control" id="assistsId{{stat.key}}" 
+            (change)="onChange(stat.key, 'assists', 'assistsId')" value="{{stat.assists}}" style="width:75px;">
+          </td>
+          <td>
+            <input type="number" class="form-control" id="pointsId{{stat.key}}" 
+            (change)="onChange(stat.key, 'points', 'pointsId')" value="{{stat.points}}" style="width:75px;">
+          </td>
         </tr>
       </tbody>
     </table>
