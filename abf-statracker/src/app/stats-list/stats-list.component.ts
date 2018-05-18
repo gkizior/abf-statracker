@@ -23,18 +23,16 @@ export class StatsListComponent implements OnInit {
 
 
   constructor(private db: AngularFireDatabase, private route: ActivatedRoute) {
-    this.route.params.subscribe( params => console.log(params) );
   }
 
   ngOnInit() {
     this.id = window.location.pathname.substring(1);
     this.table = '/stats/' + this.id;
-    this.statsRef = this.db.list('/stats/' + this.id);
+    this.statsRef = this.db.list(this.table);
     this.stats$ = this.statsRef.snapshotChanges().map(changes => {
         return changes.map(c => ({ key: c.payload.key, ...c.payload.val()
       }));
     });
-    this.GetURLParameter();
   }
 
   onChange(key: string, category: string, value: string) {
@@ -42,11 +40,6 @@ export class StatsListComponent implements OnInit {
     const elementValue = textInput.value;
     const change = JSON.parse('{ "' + category + '": "' + elementValue + '"}');
     const addedStat = this.db.object(this.table + '/' + key).update(change);
-  }
-
-  GetURLParameter() {
-    const sPageURL = window.location.pathname.substring(1);
-    console.log(sPageURL);
   }
 
 }

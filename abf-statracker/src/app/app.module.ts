@@ -13,14 +13,16 @@ import { environment } from './../environments/environment';
 import { AppNavbarComponent } from './app-navbar/app-navbar.component';
 import { StatsListComponent } from './stats-list/stats-list.component';
 import { AddStatComponent } from './add-stat/add-stat.component';
-import { AppRoutingModule } from './app-routing.module';
+import { ROUTING } from './app-routing.module';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     AppNavbarComponent,
     StatsListComponent,
-    AddStatComponent
+    AddStatComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +30,7 @@ import { AppRoutingModule } from './app-routing.module';
     AngularFireDatabaseModule,
     AngularFireAuthModule,
     NgbModule.forRoot(),
-    AppRoutingModule,
+    ROUTING
   ],
   providers: [],
   bootstrap: [AppComponent]
