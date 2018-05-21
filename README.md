@@ -11,6 +11,8 @@ Navigate to the folder that contains /src
 
 Run 'npm install'
 
+Run 'npm install -g @angular/cli@latest'
+
 When finished, run 'ng serve'
 
 Go to localhost:4200
