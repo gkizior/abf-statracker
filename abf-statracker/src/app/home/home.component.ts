@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
   id: string;
   validResult: string;
   addStat: boolean;
+  enterRoom: boolean;
 
   blankStat = {
     number: '',
@@ -30,6 +31,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.addStat = true;
+    this.enterRoom = false;
   }
 
   addStatChange() {
@@ -86,6 +88,10 @@ export class HomeComponent implements OnInit {
       text += possible.charAt(Math.floor(Math.random() * possible.length));
     }
     return text;
+  }
+
+  showInputRoom() {
+    this.enterRoom = !this.enterRoom;
   }
 
 }
