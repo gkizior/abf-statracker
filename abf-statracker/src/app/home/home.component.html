@@ -2,8 +2,18 @@
   ABF StaTracker
 </h3>
 
-<div class='container'>
-  <div class='d-flex justify-content-center'>
+<div class='row'>
+
+  <div class='col'>
+    <app-add-stat-page (clicked)="addStatChange($event)" *ngIf="addStat"></app-add-stat-page>
+    <div *ngIf="!addStat">
+      <input class="form-control form-control-lg" id="roomCode" type="text" placeholder="Enter a room code">
+      <button (click)="newRoom(false)">Create Room with random room code</button>
+      <button (click)="newRoom(true)">Create Room with entered room code</button>
+    </div>
+  </div>
+
+  <div class='col'>
     <input class="form-control form-control-lg" id="inputsm" type="text" placeholder="Room code...">
   </div>
 </div>
