@@ -15,6 +15,7 @@ import { StatsListComponent } from './stats-list/stats-list.component';
 import { AddStatComponent } from './add-stat/add-stat.component';
 import { ROUTING } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
+import { AddStatPageComponent } from './add-stat-page/add-stat-page.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { HomeComponent } from './home/home.component';
     AppNavbarComponent,
     StatsListComponent,
     AddStatComponent,
-    HomeComponent
+    HomeComponent,
+    AddStatPageComponent
   ],
   imports: [
     BrowserModule,
