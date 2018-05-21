@@ -4,14 +4,12 @@ import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 
 import { Router } from '@angular/router';
 
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
   table: string;
   id: string;
   validResult: string;
@@ -27,7 +25,7 @@ export class HomeComponent implements OnInit {
     points: ''
   };
 
-  constructor(private db: AngularFireDatabase, private router: Router) { }
+  constructor(private db: AngularFireDatabase, private router: Router) {}
 
   ngOnInit() {
     this.addStat = true;
@@ -41,9 +39,12 @@ export class HomeComponent implements OnInit {
   go() {
     this.id = (<HTMLInputElement>document.getElementById('inputsm')).value;
     this.table = '/stats/' + this.id;
-    const result = this.db.database.ref(this.table).once('value').then(function (snapshot) {
-      return snapshot.val() != null;
-    });
+    const result = this.db.database
+      .ref(this.table)
+      .once('value')
+      .then(function(snapshot) {
+        return snapshot.val() != null;
+      });
     result.then(valid => this.redirect(valid));
   }
 
@@ -63,9 +64,12 @@ export class HomeComponent implements OnInit {
       this.id = this.randomString(5);
     }
     this.table = '/stats/' + this.id;
-    const result = this.db.database.ref(this.table).once('value').then(function (snapshot) {
-      return snapshot.val() != null;
-    });
+    const result = this.db.database
+      .ref(this.table)
+      .once('value')
+      .then(function(snapshot) {
+        return snapshot.val() != null;
+      });
     result.then(valid => this.makeRoom(valid));
   }
 
@@ -82,7 +86,8 @@ export class HomeComponent implements OnInit {
 
   randomString(length) {
     let text = '';
-    const possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const possible =
+      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
     for (let i = 0; i < length; i++) {
       text += possible.charAt(Math.floor(Math.random() * possible.length));
@@ -93,5 +98,4 @@ export class HomeComponent implements OnInit {
   showInputRoom() {
     this.enterRoom = !this.enterRoom;
   }
-
 }
